@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blockchain Interface</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<h1>Blockchain Demo</h1>
+<h2>Mine a Block</h2>
+<button onclick="mineBlock()">Mine Block</button>
+
+<h2>Create a Transaction</h2>
+<form onsubmit="submitTransaction(); return false;">
+    <label for="sender">Sender:</label>
+    <input type="text" id="sender" name="sender"><br>
+    <label for="recipient">Recipient:</label>
+    <input type="text" id="recipient" name="recipient"><br>
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount"><br>
+    <button type="submit">Submit Transaction</button>
+</form>
+
+<h2>Blockchain</h2>
+<pre id="blockchainDisplay"></pre>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

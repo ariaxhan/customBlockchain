@@ -4,7 +4,8 @@ from textwrap import dedent
 from time import time
 from uuid import uuid4
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
+
 
 class Blockchain(object):
 
@@ -94,7 +95,6 @@ class Blockchain(object):
         """
 
         guess = f'{last_proof}{proof}'.encode()
-        print("hello")
         guess_hash = hashlib.sha256(guess).hexdigest()
         return guess_hash[:4] == "0000"
 
@@ -107,6 +107,20 @@ node_identifier = str(uuid4()).replace('-', '')
 
 # Instantiate the Blockchain
 blockchain = Blockchain()
+
+# A simple dictionary to store user balances based on identifiers
+identifiers = {}
+
+
+def create_identifier(self, user_name):
+    # Create a new identifier for a user
+    new_id = str(uuid4()).replace('-', '')
+    self.identifiers[user_name] = new_id
+    return new_id
+
+
+user_identifier = app.create_identifier("JohnDoe")
+print(f"Identifier for user JohnDoe: {user_identifier}")
 
 
 @app.route('/mine', methods=['GET'])
@@ -145,6 +159,11 @@ def full_chain():
         'length': len(blockchain.chain),
     }
     return jsonify(response), 200
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
