@@ -1,7 +1,105 @@
-body {
-    font-family: Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+/* Importing Open Props for modern CSS styling */
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+@import "https://unpkg.com/open-props/buttons.min.css";
+
+:root {
+    /* Custom color palette for a cryptocurrency theme */
+    --primary-color: #be93c5; /* Soft purple */
+    --secondary-color: #7bc6cc; /* Complementary teal for accents */
+    --gradient-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --text-color: #ffffff; /* White text for high contrast */
+    --border-radius: 20px;
+    --box-shadow-color: rgba(0, 0, 0, 0.2); /* Deeper shadow for a subtle depth */
+    --font-family: 'Orbitron', sans-serif; /* Techy, modern font */
+    --background-light: #ffffff; /* White background for elements */
 }
 
-input, button {
+body {
+    font-family: var(--font-family);
+    background: var(--gradient-background);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+h1, h2 {
+    margin: 15px 0;
+}
+
+h1 {
+    padding-top: 20px;
+}
+
+.button, button {
+    background: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 14px var(--box-shadow-color);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.button:hover, button:hover {
+    background: #668eea; /* Lighter purple for hover */
+    box-shadow: 0 6px 20px var(--box-shadow-color);
+}
+
+input[type="text"], input[type="number"] {
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    width: 100%;
     margin-top: 10px;
 }
+
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 4px 14px var(--box-shadow-color);
+    width: 100%;
+    max-width: 360px;
+}
+
+pre {
+    background: var(--background-light); /* White background */
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 14px var(--box-shadow-color);
+    width: 100%;
+    max-width: 600px;
+    overflow-x: auto;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    input[type="text"], input[type="number"], .button, button {
+        width: 100%;
+    }
+}
+
+
